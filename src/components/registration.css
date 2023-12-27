@@ -7,7 +7,7 @@
     border-radius: 25px;
     padding: 40px;
     margin: 5px;
-    width: 60%; 
+    width: 50%; 
     flex-direction: column;
     box-shadow: 2px 2px 2px 1px  rgba(34, 20, 134, 0.5);
 }
@@ -15,6 +15,8 @@
 .form{
     width: 90%;
     padding: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .input{
@@ -39,4 +41,6 @@ input:focus{
     margin-top: 20px;
     cursor: pointer;
     color: white;
+    width: 40%;
+    align-self: center;   
 }
