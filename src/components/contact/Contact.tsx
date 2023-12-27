@@ -1,11 +1,11 @@
 import Layout from "../../Layout"
 
-const Home = () => {
+const Contact = () => {
   return (
     <Layout>
-        <div>Home Component</div>
+        <div>Contact</div>
     </Layout>
   )
 }
 
-export default Home
+export default Contact

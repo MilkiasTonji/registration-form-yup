@@ -1,13 +1,11 @@
 import './App.css'
-import Navbar from './components/Navbar'
 import Registration from './components/Registration'
-
+import Layout from './Layout'
 function App() {
   return (
-    <div className='all_container'>
-      <Navbar />
+    <Layout>
       <Registration />
-    </div>
+    </Layout>
   )
 }
 
