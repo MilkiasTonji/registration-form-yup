@@ -8,11 +8,13 @@ import Home from './components/home/Home.tsx'
 import Service from './components/services/Service.tsx'
 import About from './components/about/About.tsx'
 import Contact from './components/contact/Contact.tsx'
+import ErrorPage from './ErrorPage.tsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <App />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/home',
