@@ -12,10 +12,10 @@ const Navbar = () => {
 
     if (isOpen) {
       menu?.classList.remove(value);
-      menu?.classList.add("open");
+      menu?.classList.add("close");
     } else {
       menu?.classList.remove(value);
-      menu?.classList.add("close");
+      menu?.classList.add("open");
     }
  }
 
