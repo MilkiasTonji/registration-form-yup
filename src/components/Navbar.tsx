@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
@@ -23,10 +24,10 @@ const Navbar = () => {
       <button id="hamburger-icon" onClick={handleToggle}> ☰ </button>
       <ul id="menu">
         <li>
-          <a href={"/home"}>Home</a>
-          <a href="/services">Services</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
+          <Link to={"/home"}>Home</Link>
+          <Link to={"/services"}>Services</Link>
+          <Link to={"/about"}>About</Link>
+          <Link to={"/contact"}>Contact</Link>
         </li>
       </ul>
     </div>
