@@ -3,7 +3,6 @@ import { useState } from "react";
 import "./registration.css";
 
 import * as yup from 'yup';
-import store from "../utils/localforage";
 import { useNavigate } from "react-router-dom";
 import localForage from "localforage";
 

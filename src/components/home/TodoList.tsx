@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Layout from "../../Layout";
-import store from "../../utils/localforage";
 import { useNavigate } from "react-router-dom";
 import localforage from "localforage";
 
