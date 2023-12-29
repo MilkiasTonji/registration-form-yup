@@ -4,11 +4,11 @@ import App from './App.tsx'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './components/home/Home.tsx'
 import Service from './components/services/Service.tsx'
 import About from './components/about/About.tsx'
 import Contact from './components/contact/Contact.tsx'
 import ErrorPage from './ErrorPage.tsx'
+import TodoList from './components/home/TodoList.tsx'
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/home',
-    element: <Home />
+    element: <TodoList />
   },
   {
     path: '/services',
