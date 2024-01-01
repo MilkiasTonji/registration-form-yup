@@ -17,7 +17,6 @@ const Navbar = ({user}: any) => {
       menu?.classList.add("open");
     }
  }
-console.log("user: ", user);
   return (
     <div className="container">
       <div>
