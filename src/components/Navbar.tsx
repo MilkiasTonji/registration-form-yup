@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = ({user}: any) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
- console.log("myuser: ", user)
  const handleToggle = () => {
     const menu = document.getElementById("menu");
     let value: any = menu?.classList.value || 'open';
@@ -23,9 +22,7 @@ const Navbar = ({user}: any) => {
     <div className="container">
       <div>
       <button id="hamburger-icon" onClick={handleToggle}> ☰ </button>
-        {
-          user && <div className="logo">{user.firstName.charAt(0)}</div>
-        }
+         <div className="logo"> {Object.keys(user).length === 0 ? 'M': user.firstName.charAt(0)}</div>
       </div>
       <ul id="menu">
         <li>

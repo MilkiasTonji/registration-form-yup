@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import Navbar from "./components/Navbar";
 import localforage from "localforage";
 
@@ -7,18 +7,24 @@ type childProp = {
 };
 const Layout = ({ children }: childProp) => {
  const [user, setUser] = useState({});
-  useEffect(()=> {
-    const getuser = async () => {
-      try {
-        const user: any = await localforage.getItem("user");
-        setUser(user)
-      } catch (err) {
-        console.log(err);
-      }
-    };
-  
-    getuser();
-  },[])
+
+ const memoizedUser = useMemo(() => {
+  const getuser = async () => {
+    try {
+      const user: any = await localforage.getItem("user");
+      return user; // Return the fetched user
+    } catch (err) {
+      console.log(err);
+      return null; // Return null on error
+    }
+  };
+
+  return getuser(); // Invoke the function to fetch user
+}, []);
+
+useEffect(() => {
+  setUser(memoizedUser); // Update state with memoized user
+}, [memoizedUser]);
 
   return (
     <div className="all_container">
