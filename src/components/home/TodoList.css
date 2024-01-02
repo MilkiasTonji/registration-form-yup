@@ -43,4 +43,7 @@
     justify-content: space-between;
     padding: 10px;
     width: 100%;
+    border-bottom: 2px solid salmon;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
