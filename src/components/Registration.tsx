@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./registration.css";
 
 import * as yup from 'yup';
+import { useNavigate } from "react-router-dom";
+import localForage from "localforage";
 
 
 type UserType = {
@@ -21,6 +23,8 @@ const Registration = () => {
     const [password, setpassword] = useState("");
     const [vError, setVerror] = useState("");
 
+    const navigation = useNavigate();
+
    const userSchema = yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().default("Tonji").nullable(),
@@ -34,8 +38,8 @@ const Registration = () => {
       const userObject: UserType = {firstName, lastName, email, phoneNumber, password}
       try {
         const user = await userSchema.validate(userObject, {strict: true})
-        console.log("user: ", user)
-        
+        await localForage.setItem("user", user)
+        navigation("/home");
       } catch (error: any) {
         const rr = error.name + " " + error.errors[0]
         setVerror(rr)
