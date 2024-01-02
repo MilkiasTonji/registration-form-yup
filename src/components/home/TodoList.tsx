@@ -13,7 +13,6 @@ const TodoList = () => {
   const [title, setTitle] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [todoList, setTodoList] = useState([]);
-  const [todoListUpdated, setTodoListUpdated] = useState<boolean>(false)
   const navigate = useNavigate();
 
   const todoSchema = yup.object({
@@ -35,7 +34,7 @@ const TodoList = () => {
     };
 
     getuser();
-  }, [todoListUpdated]);
+  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -48,7 +47,7 @@ const TodoList = () => {
         todos = [todo];
       }
       await localforage.setItem("todos", todos);
-      setTodoListUpdated(true)
+      setTodoList(todos)
       // setTitle("");
     } catch (error: any) {
       const rr = error.name + " " + error.errors[0];
@@ -56,11 +55,11 @@ const TodoList = () => {
     }
   };
 
-  const handleDelete = async(todo: TodoType) => {
+  const handleDelete = async(todo: any) => {
     const todos: any = await localforage.getItem("todos");
-    const d =  todos.filter((t: TodoType)=> t.title !== todo.title);
-    setTodoList(d)
-    setTodoListUpdated(true);
+    const updatedTodos =  todos.filter((t: TodoType) => t.title !== todo.title)
+    await localforage.setItem("todos", updatedTodos);
+    setTodoList(updatedTodos)
   }
   return (
     <Layout>
@@ -83,7 +82,7 @@ const TodoList = () => {
           todoList.map((todo: TodoType, index)=> (
             <div className="list_inner_container" key={`${index}-todoList`}>
                <p>{todo.title}</p>
-               <button className="button" onClick={(todo: any)=> handleDelete(todo)}>
+               <button className="button" onClick={()=> handleDelete(todo)}>
           Delete
         </button>
             </div>
